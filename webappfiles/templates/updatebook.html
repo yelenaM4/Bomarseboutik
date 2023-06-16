@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		{% extends "baseadmin.html" %} {% block content %}
+		<h3>{{msg}}</h3>
+		<form action="/updaterecord" method="post" class="mt-3">
+			<h3>Update Book</h3>
+			<div class="row col-md-5 mb-3">
+				<label for="txtisbn" class="form-label">ISBN</label>
+				<input type="text" class="form-control" name="txtisbn" id="txtisbn" />
+			</div>
+			<div class="row col-md-5 mb-3">
+				<label for="txtprice" class="form-label">Price</label>
+				<input type="text" class="form-control" name="txtprice" id="txtprice" />
+			</div>
+			<input
+				type="submit"
+				class="col-3 btn btn-primary"
+				value="Update
+        Record"
+			/>
+		</form>
+		{% endblock %}
+	</body>
+</html>

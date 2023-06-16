@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		{% extends "baseadmin.html" %} {% block content %}
+		<div class="row mt-3">
+			<h3>Book Listing</h3>
+			<table border="5">
+				<thead>
+					<th>Title</th>
+					<th>ISBN</th>
+					<th>Publication Date</th>
+					<th>Price (Rs.)</th>
+					<th>Author FullName</th>
+					<th>Book Cover</th>
+				</thead>
+				{% for row in rows %}
+				<tr>
+					<td>{{row.1}}</td>
+					<td>{{row.2}}</td>
+					<td>{{row.4}}</td>
+					<td>{{row.5}}</td>
+					<td>{{row.15}} {{row.16}}</td>
+					<td><img src="{{row.8}}" width="50px" class="zz_image" /></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		{% endblock %}
+	</body>
+</html>

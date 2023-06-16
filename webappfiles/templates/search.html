@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		{% extends "baseadmin.html" %} {% block content %}
+		<form action="/searchbk" method="get" class="mt-5">
+			<h3>Search Book by language</h3>
+			<div class="row col-md-5 mb-5">
+				<label for="txtlang" class="form-label">Language</label>
+				<input type="text" class="form-control" name="txtlang" id="txtlang" />
+			</div>
+			<input
+				type="submit"
+				class="col-3 btn btn-primary mb-3"
+				value="Search Book"
+			/>
+		</form>
+
+		{% if rows %}
+		<table border="5">
+			<thead>
+				<th>Title</th>
+				<th>ISBN</th>
+				<th>Publication Date</th>
+				<th>Price (Rs.)</th>
+				<th>Language</th>
+				<th>Book Cover</th>
+			</thead>
+			{% for row in rows %}
+			<tr>
+				<td>{{row.1}}</td>
+				<td>{{row.2}}</td>
+				<td>{{row.4}}</td>
+				<td>{{row.5}}</td>
+				<td>{{row.13}}</td>
+				<td><img src="{{row.8}}" width="50px" /></td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% elif request.args.get("txtlang") is none %}
+		<p></p>
+		{% else %}
+		<p>No {{request.args.get("txtlang")}} book in store!</p>
+		{% endif %} {% endblock %}
+	</body>
+</html>

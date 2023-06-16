@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://kit.fontawesome.com/0c54b7787d.js"></script>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/main.min.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/style.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"
+		/>
+		<link
+			rel="shortcut icon"
+			href="{{ url_for('static', filename='images/favicon.ico') }}"
+		/>
+		<link
+			type="text/css"
+			href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header class="row">
+			<nav
+				class="navbar fixed-top navbar-expand-lg bg-danger bg-gradient navbar-dark"
+			>
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">BoMarse Boutik</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarScroll"
+						aria-controls="navbarScroll"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarScroll">
+						<ul
+							class="navbar-nav me-auto my-2 my-lg-0"
+							style="--bs-scroll-height: 100px"
+						>
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									aria-current="page"
+									href="{{url_for('views.adminhome')}}"
+									>Home</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#" disabled>Link</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									id="navbarScrollingDropdown"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									Manage Author
+								</a>
+								<ul
+									class="dropdown-menu"
+									aria-labelledby="navbarScrollingDropdown"
+								>
+									<li>
+										<a
+											class="dropdown-item"
+											href="{{url_for('views.manage_author')}}"
+											>Action</a
+										>
+									</li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><hr class="dropdown-divider" /></li>
+									<li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									href="{{url_for('views.help')}}"
+									tabindex="-1"
+									aria-disabled="true"
+									>Help Corner</a
+								>
+							</li>
+						</ul>
+						<form class="d-flex">
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Search"
+								arialabel="
+Search"
+							/>
+							<button class="btn btn-outline-warning" type="submit">
+								Search
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container-fluid mt-5">
+			<div class="row">
+				<nav class="col-md-2 mt-2 bg-dark flex-column min-vh-100">
+					<div class="accordion mt-4" id="accordionExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingdashboard">
+								<a class="nav-link" href="#"><strong>Dashboard</strong></a>
+							</h2>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseOne"
+									aria-expanded="false"
+									aria-controls="collapseOne"
+								>
+									Manage Book
+								</button>
+							</h2>
+							<div
+								id="collapseOne"
+								class="accordion-collapse collapse"
+								aria-labelledby="headingOne"
+								data-bs-parent="#accordionExample"
+							>
+								<div class="accordion-body">
+									<a class="nav-link" href="{{url_for('views.add_book')}}"
+										><strong>Add Book</strong></a
+									>
+									<a class="nav-link" href="{{url_for('views.view_book')}}"
+										><strong>Book Listing</strong></a
+									>
+									<a class="nav-link" href="{{url_for('views.search_book')}}"
+										><strong>Search Book</strong></a
+									>
+									<a class="nav-link" href="{{url_for('views.update_book')}}"
+										><strong>Update Book</strong></a
+									>
+									<a class="nav-link" href="{{url_for('views.delete_book')}}"
+										><strong>Delete Book</strong></a
+									>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseTwo"
+									aria-expanded="false"
+									aria-controls="collapseTwo"
+								>
+									Manage Customer
+								</button>
+							</h2>
+							<div
+								id="collapseTwo"
+								class="accordion-collapse collapse"
+								aria-labelledby="headingTwo"
+								data-bs-parent="#accordionExample"
+							>
+								<div class="accordion-body">
+									<a
+										class="nav-link"
+										href="{{url_for('views.search_customer')}}"
+										><strong>Search Customer</strong></a
+									>
+									<a class="nav-link" href="#"><strong>Link 3</strong></a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button
+									class="accordion-button collapsed"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree"
+								>
+									Accordion Item #3
+								</button>
+							</h2>
+							<div
+								id="collapseThree"
+								class="accordion-collapse collapse"
+								arialabelledby="
+        headingThree"
+								data-bs-parent="#accordionExample"
+							>
+								<div class="accordion-body">
+									<a class="nav-link" href="#"><strong>Link 3</strong></a>
+									<a class="nav-link" href="#"><strong>Link 3</strong></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<main class="col-md-7 offset-md-1 py-5">
+					{% block content %} {% endblock %}
+				</main>
+			</div>
+		</div>
+
+		<script
+			type="text/javascript"
+			src="{{url_for('static', filename='js/jquery-3.6.0.js')}}"
+		></script>
+
+		<script src="{{url_for('static', filename='js/app.js')}}"></script>
+
+		<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+		<script
+			type="text/javascript"
+			src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+		></script>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			type="text/javascript"
+			src="{{url_for('static', filename='js/bootstrap.min.js')}}"
+		></script>
+		<script
+			type="text/javascript"
+			src="{{url_for('static', filename='js/image-popup.js')}}"
+		></script>
+
+		<script type="text/javascript">
+			$(function () {
+				$("#txtpdate").datepicker({
+					dateFormat: "yy/mm/dd",
+				});
+			});
+		</script>
+	</body>
+</html>

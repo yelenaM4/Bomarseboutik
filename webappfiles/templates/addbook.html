@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		{% extends "baseadmin.html" %} {% block content %} {{msg}}
+		<form
+			class="row"
+			action="/savedetails"
+			method="post"
+			enctype="multipart/form-data"
+		>
+			<h2 class="mt-3">Add Book</h2>
+			<div class="col-md-6 pt-5">
+				<div class="mb-3">
+					<label for="txttitle" class="form-label">Title</label>
+					<input
+						type="text"
+						class="form-control"
+						name="txttitle"
+						id="txttitle"
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="txtisbn" class="form-label">ISBN</label>
+					<input type="text" class="form-control" id="txtisbn" name="txtisbn" />
+				</div>
+				<div class="mb-3">
+					<label for="txtprice" class="form-label">Price</label>
+					<input
+						type="text"
+						class="form-control"
+						id="txtprice"
+						name="txtprice"
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="txtqty" class="form-label">Quantity</label>
+					<input type="text" class="form-control" id="txtqty" name="txtqty" />
+				</div>
+				<div class="mb-3">
+					<label for="txtnumpage" class="form-label">Number of pages</label>
+					<input
+						type="text"
+						class="form-control"
+						id="txtnumpage"
+						name="txtnumpage"
+					/>
+				</div>
+			</div>
+			<div class="col-md-6 pt-5">
+				<div class="mb-3">
+					<label for="txtpdate" class="form-label">Publication Date</label>
+					<input
+						autocomplete="off"
+						class="form-control"
+						id="txtpdate"
+						name="txtpdate"
+					/>
+				</div>
+				<div class="mb-3">
+					<select
+						id="ddlgenre"
+						name="ddlgenre"
+						class="form-select form-select-md mb-3"
+						aria-label=".form-select-lg example"
+					>
+						<option>Select Genre</option>
+						{% for g in rows1 %}
+						<option value="{{g[0]}}">{{g[1]}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="mb-3">
+					<select
+						id="ddlauthor"
+						multiple
+						name="ddlauthor"
+						class="form-select form-select-md mb-3"
+						aria-label=".form-select-lg example"
+					>
+						<option>Select Author</option>
+						{% for a in rows3 %}
+						<option value="{{a[0]}}">{{a[1]}} {{a[2]}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="mb-3">
+					<select
+						id="ddllang"
+						name="ddllang"
+						class="form-select form-select-md mb-3"
+						aria-label=".form-select-lg example"
+					>
+						<option>Select Language</option>
+						{% for l in rows2 %}
+						<option value="{{l[0]}}">{{l[2]}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="filecover" class="form-label">Upload Book Cover</label>
+					<input
+						class="form-control form-control-lg"
+						id="filecover"
+						name="filecover"
+						type="file"
+					/>
+				</div>
+				<div class="form-check mb-3">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						value="1"
+						id="chkavailable"
+						name="chkavailable"
+					/>
+					<label class="form-check-label" for="chkavailable"> In Stock </label>
+				</div>
+			</div>
+			<button type="submit" class="col-6 btn btn-primary mx-auto">
+				Add Book
+			</button>
+		</form>
+		{% endblock %}
+	</body>
+</html>

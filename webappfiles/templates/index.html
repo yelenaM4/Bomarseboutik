@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			span.emoj {
+				font-size: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		{% extends "basecust.html" %} {% block content %}
+		<div class="row text-center">
+			<div class="col-md-6 pt-5 mx-auto">
+				<h2>
+					“Old books exert a strange fascination for me -- their smell, their
+					feel, their history; wondering who might have owned them, how they
+					lived, what they felt.” ― Lauren Willig
+				</h2>
+
+				<div class="d-grid gap-1 col-6 mx-auto mt-5">
+					<span class="emoj">{{x}}</span>
+				</div>
+			</div>
+		</div>
+		{% endblock %}
+	</body>
+</html>

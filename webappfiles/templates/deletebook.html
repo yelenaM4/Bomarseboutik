@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		{% extends "baseadmin.html" %} {% block content %}
+		<h3>{{msg}}</h3>
+		<form action="/deleterecord" method="post" class="mt-5">
+			<h3>Remove Book from store</h3>
+			<div class="row col-md-5 mb-5">
+				<label for="txtisbn" class="form-label">ISBN</label>
+				<input type="text" class="form-control" name="txtisbn" id="txtisbn" />
+			</div>
+			<input
+				type="submit"
+				class="col-3 btn btn-primary"
+				onclick="return
+        confirm('Are you sure you wanna delete this book?')"
+				value="Delete Book"
+			/>
+		</form>
+		{% endblock %}
+	</body>
+</html>

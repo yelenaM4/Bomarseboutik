@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		{% extends "baseadmin.html" %} {% block content %}
+		<form action="/searchcustomer" method="get" class="mt-5">
+			<h3>Search Customer</h3>
+			<div class="row">
+				<div class="col-md-5 mb-5">
+					<label for="txtcust" class="form-label">Enter Customer name:</label>
+					<input type="text" class="form-control" name="txtcust" id="txtcust" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5 mb-5">
+					<input
+						type="submit"
+						class="btn btn-outline-primary"
+						value="Search Customer"
+					/>
+				</div>
+			</div>
+		</form>
+		{% endblock %}
+	</body>
+</html>
